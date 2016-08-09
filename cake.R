@@ -2,7 +2,8 @@
 library(readxl)
 library(ggplot2)
 
-setwd("C:/git/cake_data")
+#setwd("C:/git/cake_data")
+setwd("C:/Dev/git/cake_data")
 data <- read_excel("cake_data.xlsx")
 
 # clean NA rows out
