@@ -23,7 +23,7 @@ ggplot(data, aes(Date, Time, colour = Food))+
 ggplot(data, aes(Date, Food, colour = Food))+
 geom_point() +
 ggtitle("Free Food Left in the Kitchen at Work")+
-labs(x="Food", y="Time of Day")+
+labs(x="Date", y="Food")+
 scale_colour_hue(guide=FALSE)+ #to remove legend 
 scale_x_date(date_breaks = "1 month", date_labels = "%b %y")
                
