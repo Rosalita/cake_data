@@ -19,17 +19,14 @@ data[,4] <- as.logical(data[,4])
 #Date column is now a Date variable
 #Time column is still a POSIXct variable
 
-
-
-#first plot show all foods by date and time
+#plot show all foods by date and time
 ggplot(data, aes(Date, Time, colour = Food))+
   geom_point() +
   ggtitle("Free Food Left in the Kitchen at Work")+
   labs(x="Date", y="Time of Day")
 
 
-
-#second plot - show foods arranged by date
+#plot show foods arranged by date
 ggplot(data, aes(Date, Food, colour = Food))+
 geom_point() +
 ggtitle("Free Food Left in the Kitchen at Work")+
@@ -38,7 +35,7 @@ scale_colour_hue(guide=FALSE)+ #to remove legend
 scale_x_date(date_breaks = "1 month", date_labels = "%b %y")
                
 
-#third plot try make a plot facetted by food type.
+#plot try make a plot facetted by food type.
 ggplot(data, aes(Date, Time)) +
 geom_point() +
 scale_x_date(date_breaks = "2 month", date_labels = "%b")+  #use scale_*_date for date variables
@@ -47,7 +44,7 @@ facet_wrap(~Food, nrow =2)+
   geom_smooth(method ="gam", se = FALSE)
 
 
-#fourth plot show all foods by date and time, colour by release, try add smooth lines
+#plot show all foods by date and time, colour by release, try add smooth lines
 ggplot(data, aes(Date, Time, colour = Release))+
   geom_point() +
   ggtitle("Free Food Left in the Kitchen at Work")+
@@ -57,3 +54,4 @@ ggplot(data, aes(Date, Time, colour = Release))+
   geom_smooth(method ="loess", span = 1, se = FALSE)
  
 
+#
