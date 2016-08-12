@@ -13,9 +13,12 @@ str(data)
 #convert the date column to be a date so ggplot2 can manipulate it
 data[,1] <- as.Date(data[,1])
 
+# set Release column back to being  logical data type
+data[,4] <- as.logical(data[,4])
+
 #Date column is now a Date variable
 #Time column is still a POSIXct variable
-#
+
 
 
 #first plot show all foods by date and time
@@ -44,11 +47,13 @@ facet_wrap(~Food, nrow =2)+
   geom_smooth(method ="gam", se = FALSE)
 
 
-#fourth plot show all foods by date and time, try add smooth lines
-ggplot(data, aes(Date, Time, colour = Food))+
+#fourth plot show all foods by date and time, colour by release, try add smooth lines
+ggplot(data, aes(Date, Time, colour = Release))+
   geom_point() +
   ggtitle("Free Food Left in the Kitchen at Work")+
   labs(x="Date", y="Time of Day")+
   scale_x_date(date_breaks = "1 month", date_labels = "%b %y")+  #use scale_*_date for date variables
   scale_y_datetime(date_breaks = "2 hours", date_labels = "%H:%M")+ #use scale_*_datetime for POSIXct variables
-  geom_smooth(method ="gam", se = FALSE)
+  geom_smooth(method ="loess", span = 1, se = FALSE)
+ 
+
